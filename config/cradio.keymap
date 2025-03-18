@@ -146,7 +146,6 @@
             bindings = <&none>, <&none>;
 
             #binding-cells = <0>;
-            keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
             mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
         };
 
@@ -157,7 +156,6 @@
 
             #binding-cells = <0>;
             mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
-            keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
         };
     };
 
