@@ -92,6 +92,16 @@
             bindings = <&mo 4>;
             key-positions = <30 21>;
         };
+
+        left_app {
+            bindings = <&left_ctrl_alt_gui>;
+            key-positions = <30 31>;
+        };
+
+        right_app {
+            bindings = <&right_ctrl_alt_gui>;
+            key-positions = <32 33>;
+        };
     };
 
     behaviors {
@@ -129,6 +139,26 @@
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             require-prior-idle-ms = <50>;
         };
+
+        left_ctrl_alt_gui: left_ctrl_alt_gui {
+            compatible = "zmk,behavior-mod-morph";
+            label = "LEFT_CTRL_ALT_GUI";
+            bindings = <&none>, <&none>;
+
+            #binding-cells = <0>;
+            keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+        };
+
+        right_ctrl_alt_gui: right_ctrl_alt_gui {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RIGHT_CTRL_ALT_GUI";
+            bindings = <&none>, <&none>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+        };
     };
 
     keymap {
@@ -140,14 +170,14 @@
             bindings = <
 &kp Q                     &kp W                     &kp E                       &kp R                         &kp T               &kp Y                  &kp U                           &kp I                         &kp O                       &kp P
 &left_homerow LEFT_ALT A  &left_homerow LEFT_GUI S  &left_homerow LEFT_SHIFT D  &left_homerow LEFT_CONTROL F  &kp G               &kp H                  &right_homerow RIGHT_CONTROL J  &right_homerow RIGHT_SHIFT K  &right_homerow RIGHT_GUI L  &right_homerow RIGHT_ALT SEMI
-&kp Z                     &kp X                     &kp C                       &kp V                         &kp B               &kp N                  &kp M                           &kp COMMA                     &kp DOT                     &kp SLASH
+&kp Z                     &kp X                     &kp C                       &layer_key 5 V                &kp B               &kp N                  &kp M                           &kp COMMA                     &kp DOT                     &kp SLASH
                                                                                 &mo 1                         &mt LSHIFT SPACE    &mt RIGHT_SHIFT ENTER  &layer_key 2 SPACE
             >;
         };
 
         move_layer {
             bindings = <
-&kp ESC    &kp LEFT_GUI  &kp LC(C)  &kp BACKSPACE   &kp LG(RC(LS(F)))    &kp TAB         &kp BACKSPACE  &kp EQUAL     &kp PLUS   &kp DOUBLE_QUOTES
+&kp TAB    &kp LEFT_GUI  &kp LC(C)  &kp BACKSPACE   &kp LG(RC(LS(F)))    &kp TAB         &kp BACKSPACE  &kp EQUAL     &kp PLUS   &kp DOUBLE_QUOTES
 &sk LALT   &mo 3         &mo 2      &control_space  &kp LC(A)            &kp LEFT_ARROW  &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp SINGLE_QUOTE
 &kp LG(Z)  &mo 4         &kp LG(C)  &kp LG(V)       &kp LC(V)            &kp COLON       &kp AMPS       &kp GRAVE     &kp TILDE  &kp BACKSPACE
                                     &trans          &trans               &kp BACKSPACE   &kp ENTER
@@ -168,16 +198,16 @@
 &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PERCENT    &kp CARET     &kp AMPS  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
 &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5         &kp NUMBER_6  &kp N7    &kp N8    &kp N9                &kp DOUBLE_QUOTES
 &none         &none         &kp IT_SECT   &kp IT_CCED   &kp IT_DEG     &none         &none     &none     &none                 &trans
-                                          &to 0         &none          &none         &none
+                                          &sl 3         &none          &none         &none
             >;
         };
 
         config_layer {
             bindings = <
-&kp F1       &kp F2      &kp F3          &kp F4      &kp F5      &kp F6          &kp F7        &kp F8        &kp F9        &kp F10
-&sk LALT     &trans      &sk LEFT_GUI    &sk LCTRL   &kp RALT    &kp LEFT_ARROW  &kp DOWN      &kp UP_ARROW  &kp RIGHT     &trans
-&bootloader  &bt BT_CLR  &bt BT_CLR_ALL  &bt BT_NXT  &none       &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-                                         &to 0       &none       &none           &none
+&kp F1             &kp F2      &kp F3          &kp F4      &kp F5      &kp F6          &kp F7        &kp F8        &kp F9        &kp F10
+&kp LC(LA(LG(A)))  &trans      &sk LEFT_GUI    &sk LCTRL   &kp RALT    &kp LEFT_ARROW  &kp DOWN      &kp UP_ARROW  &kp RIGHT     &trans
+&bootloader        &bt BT_CLR  &bt BT_CLR_ALL  &bt BT_NXT  &none       &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+                                               &to 0       &none       &none           &none
             >;
         };
 
@@ -186,7 +216,7 @@
 &none        &none        &none        &kp IT_CEGR  &none          &none  &none  &none  &none  &none
 &kp IT_AGRV  &kp IT_IGRV  &kp IT_OGRV  &kp IT_EGRV  &kp IT_EACU    &none  &none  &none  &none  &none
 &none        &none        &none        &kp IT_UGRV  &none          &none  &none  &none  &none  &none
-                                       &none        &none          &none  &none
+                                       &to 0        &none          &none  &none
             >;
         };
 
