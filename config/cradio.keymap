@@ -67,6 +67,13 @@
             bindings = <&kp LA(LG(I))>;
             label = "CMD_ALT_I";
         };
+
+        save: save {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(S)>;
+            label = "SAVE";
+        };
     };
 
     combos {
@@ -160,6 +167,17 @@
             hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31>;
             require-prior-idle-ms = <50>;
         };
+
+        layer_save: layer_save {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_SAVE";
+            bindings = <&mo>, <&save>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            require-prior-idle-ms = <100>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -178,10 +196,10 @@
 
         move_layer {
             bindings = <
-&kp TAB         &kp LEFT_GUI  &kp LC(C)  &kp BACKSPACE   &control_tab     &kp TAB         &kp BACKSPACE  &kp EQUAL     &kp PLUS   &kp DOUBLE_QUOTES
-&sk LALT        &mo 3         &mo 2      &control_space  &kp LC(A)        &kp LEFT_ARROW  &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp SINGLE_QUOTE
-&kp LEFT_SHIFT  &mo 4         &kp LG(C)  &kp LG(V)       &kp LS(LG(F))    &kp BACKSLASH   &kp AMPS       &kp GRAVE     &kp TILDE  &kp BACKSPACE
-                                         &trans          &trans           &kp BACKSPACE   &kp ENTER
+&kp TAB         &kp LEFT_GUI     &kp LC(C)  &kp BACKSPACE   &control_tab     &kp TAB         &kp BACKSPACE  &kp EQUAL     &kp PLUS   &kp DOUBLE_QUOTES
+&sk LALT        &layer_save 3 0  &mo 2      &control_space  &kp LC(A)        &kp LEFT_ARROW  &kp DOWN       &kp UP_ARROW  &kp RIGHT  &kp SINGLE_QUOTE
+&kp LEFT_SHIFT  &mo 4            &kp LG(C)  &kp LG(V)       &kp LS(LG(F))    &kp BACKSLASH   &kp AMPS       &kp GRAVE     &kp TILDE  &kp BACKSPACE
+                                            &trans          &trans           &kp BACKSPACE   &kp ENTER
             >;
         };
 
