@@ -54,10 +54,10 @@
             label = "CONTROL_TAB";
         };
 
-        control_p: control_p {
+        command_shift_p: control_p {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RC(P)>;
+            bindings = <&kp RS(RG(P))>;
             label = "CONTROL_P";
         };
     };
@@ -108,7 +108,7 @@
         };
 
         control_p {
-            bindings = <&control_p>;
+            bindings = <&command_shift_p>;
             key-positions = <16 9>;
         };
     };
