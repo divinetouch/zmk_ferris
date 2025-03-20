@@ -78,7 +78,7 @@
         layer_hold: layer_hold {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&mo 5>, <&macro_press>, <&kp LEFT_GUI>;
+            bindings = <&macro_press>, <&mo 5 &kp LEFT_GUI>;
 
             label = "LAYER_HOLD";
         };
