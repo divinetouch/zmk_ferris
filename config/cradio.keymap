@@ -78,7 +78,7 @@
         layer_hold: layer_hold {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press>, <&mo 5 &kp LEFT_GUI>;
+            bindings = <&macro_press>, <&mo 5>, <&macro_press>, <&kp LEFT_GUI>;
 
             label = "LAYER_HOLD";
         };
@@ -141,7 +141,7 @@
 
         command_tab {
             bindings = <&layer_hold>;
-            key-positions = <30 1>;
+            key-positions = <22 30>;
         };
     };
 
@@ -247,7 +247,7 @@
             bindings = <
 &none        &none        &none    &kp IT_CEGR  &none          &none  &none  &none  &none  &none
 &kp IT_AGRV  &kp IT_IGRV  &kp TAB  &kp IT_EGRV  &kp IT_EACU    &none  &none  &none  &none  &none
-&none        &none        &none    &kp IT_UGRV  &none          &none  &none  &none  &none  &none
+&none        &none        &none    &kp TAB      &none          &none  &none  &none  &none  &none
                                    &to 0        &none          &none  &none
             >;
         };
