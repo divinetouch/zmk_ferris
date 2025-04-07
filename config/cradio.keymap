@@ -245,10 +245,10 @@
 
         accent_layer {
             bindings = <
-&none        &kp TAB      &none   &kp IT_CEGR  &none          &none  &none  &none  &none  &none
-&kp IT_AGRV  &kp IT_IGRV  &trans  &kp IT_EGRV  &kp IT_EACU    &none  &none  &none  &none  &none
-&none        &none        &none   &trans       &none          &none  &none  &none  &none  &none
-                                  &to 0        &none          &none  &none
+&none   &kp TAB  &none   &trans  &none     &none  &none  &none  &none  &none
+&trans  &trans   &trans  &trans  &trans    &none  &none  &none  &none  &none
+&none   &none    &none   &trans  &none     &none  &none  &none  &none  &none
+                         &to 0   &none     &none  &none
             >;
         };
 
